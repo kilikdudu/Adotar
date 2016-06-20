@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cachorro", "Cachorro\Cachorro.csproj", "{3D246EED-8A06-4B70-85BF-2DE120B0A9B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cachorro.Tests", "Cachorro.Tests\Cachorro.Tests.csproj", "{8E648421-860F-4CB1-A79F-4C8DF3575321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D246EED-8A06-4B70-85BF-2DE120B0A9B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D246EED-8A06-4B70-85BF-2DE120B0A9B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D246EED-8A06-4B70-85BF-2DE120B0A9B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D246EED-8A06-4B70-85BF-2DE120B0A9B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E648421-860F-4CB1-A79F-4C8DF3575321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E648421-860F-4CB1-A79F-4C8DF3575321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E648421-860F-4CB1-A79F-4C8DF3575321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E648421-860F-4CB1-A79F-4C8DF3575321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
