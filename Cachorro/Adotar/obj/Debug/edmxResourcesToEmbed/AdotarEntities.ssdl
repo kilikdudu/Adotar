@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="adotarModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="animal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="texto" Type="text" Nullable="false" />
+    <Property Name="urlImagem" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Usuario_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bairro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cidade_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Pais_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="endereco">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cep" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="complemento" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="45" />
+    <Property Name="Bairro_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="interesse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="texto" Type="text" Nullable="false" />
+    <Property Name="Animal_id" Type="bigint" Nullable="false" />
+    <Property Name="Usuario_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="like">
+    <Key>
+      <PropertyRef Name="Usuario_id" />
+      <PropertyRef Name="Animal_id" />
+    </Key>
+    <Property Name="Usuario_id" Type="bigint" Nullable="false" />
+    <Property Name="Animal_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="sobrenome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="senha" Type="text" Nullable="false" />
+    <Property Name="Endereco_id" Type="bigint" />
+  </EntityType>
+  <Association Name="fk_Animal_Usuario1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="animal" Type="Self.animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="animal">
+        <PropertyRef Name="Usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Bairro_Cidade1">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="bairro" Type="Self.bairro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bairro">
+        <PropertyRef Name="Cidade_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Cidade_Pais1">
+    <End Role="pais" Type="Self.pais" Multiplicity="1" />
+    <End Role="cidade" Type="Self.cidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cidade">
+        <PropertyRef Name="Pais_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Endereco_Bairro1">
+    <End Role="bairro" Type="Self.bairro" Multiplicity="1" />
+    <End Role="endereco" Type="Self.endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bairro">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="endereco">
+        <PropertyRef Name="Bairro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Interesse_Animal1">
+    <End Role="animal" Type="Self.animal" Multiplicity="1" />
+    <End Role="interesse" Type="Self.interesse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="animal">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="interesse">
+        <PropertyRef Name="Animal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Interesse_Usuario1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="interesse" Type="Self.interesse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="interesse">
+        <PropertyRef Name="Usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Like_Animal1">
+    <End Role="animal" Type="Self.animal" Multiplicity="1" />
+    <End Role="like" Type="Self.like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="animal">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="like">
+        <PropertyRef Name="Animal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Like_Usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="like" Type="Self.like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="like">
+        <PropertyRef Name="Usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuario_Endereco1">
+    <End Role="endereco" Type="Self.endereco" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="endereco">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="Endereco_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="adotarModelStoreContainer">
+    <EntitySet Name="animal" EntityType="Self.animal" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="bairro" EntityType="Self.bairro" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="cidade" EntityType="Self.cidade" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="endereco" EntityType="Self.endereco" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="interesse" EntityType="Self.interesse" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="like" EntityType="Self.like" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="pais" EntityType="Self.pais" Schema="cachorro" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="cachorro" store:Type="Tables" />
+    <AssociationSet Name="fk_Animal_Usuario1" Association="Self.fk_Animal_Usuario1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="animal" EntitySet="animal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Bairro_Cidade1" Association="Self.fk_Bairro_Cidade1">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="bairro" EntitySet="bairro" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Cidade_Pais1" Association="Self.fk_Cidade_Pais1">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="cidade" EntitySet="cidade" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Endereco_Bairro1" Association="Self.fk_Endereco_Bairro1">
+      <End Role="bairro" EntitySet="bairro" />
+      <End Role="endereco" EntitySet="endereco" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Interesse_Animal1" Association="Self.fk_Interesse_Animal1">
+      <End Role="animal" EntitySet="animal" />
+      <End Role="interesse" EntitySet="interesse" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Interesse_Usuario1" Association="Self.fk_Interesse_Usuario1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="interesse" EntitySet="interesse" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Like_Animal1" Association="Self.fk_Like_Animal1">
+      <End Role="animal" EntitySet="animal" />
+      <End Role="like" EntitySet="like" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Like_Usuario" Association="Self.fk_Like_Usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="like" EntitySet="like" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuario_Endereco1" Association="Self.fk_Usuario_Endereco1">
+      <End Role="endereco" EntitySet="endereco" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -27,7 +27,7 @@ namespace Adotar
         public string sobrenome { get; set; }
         public string email { get; set; }
         public string senha { get; set; }
-        public long Endereco_id { get; set; }
+        public Nullable<long> Endereco_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<animal> animal { get; set; }

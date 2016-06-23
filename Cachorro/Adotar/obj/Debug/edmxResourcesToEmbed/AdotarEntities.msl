@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="adotarModelStoreContainer" CdmEntityContainer="adotarEntities">
+    <EntitySetMapping Name="animal">
+      <EntityTypeMapping TypeName="adotarModel.animal">
+        <MappingFragment StoreEntitySet="animal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+          <ScalarProperty Name="urlImagem" ColumnName="urlImagem" />
+          <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bairro">
+      <EntityTypeMapping TypeName="adotarModel.bairro">
+        <MappingFragment StoreEntitySet="bairro">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="Cidade_id" ColumnName="Cidade_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cidade">
+      <EntityTypeMapping TypeName="adotarModel.cidade">
+        <MappingFragment StoreEntitySet="cidade">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="Pais_id" ColumnName="Pais_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="endereco">
+      <EntityTypeMapping TypeName="adotarModel.endereco">
+        <MappingFragment StoreEntitySet="endereco">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="Bairro_id" ColumnName="Bairro_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interesse">
+      <EntityTypeMapping TypeName="adotarModel.interesse">
+        <MappingFragment StoreEntitySet="interesse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+          <ScalarProperty Name="Animal_id" ColumnName="Animal_id" />
+          <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="adotarModel.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="adotarModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="Endereco_id" ColumnName="Endereco_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="like" TypeName="adotarModel.like" StoreEntitySet="like">
+      <EndProperty Name="animal">
+        <ScalarProperty Name="id" ColumnName="Animal_id" />
+      </EndProperty>
+      <EndProperty Name="usuario">
+        <ScalarProperty Name="id" ColumnName="Usuario_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

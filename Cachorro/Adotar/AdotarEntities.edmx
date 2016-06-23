@@ -73,7 +73,7 @@
           <Property Name="sobrenome" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="senha" Type="text" Nullable="false" />
-          <Property Name="Endereco_id" Type="bigint" Nullable="false" />
+          <Property Name="Endereco_id" Type="bigint" />
         </EntityType>
         <Association Name="fk_Animal_Usuario1">
           <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
@@ -172,7 +172,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Usuario_Endereco1">
-          <End Role="endereco" Type="Self.endereco" Multiplicity="1" />
+          <End Role="endereco" Type="Self.endereco" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="endereco">
@@ -306,7 +306,7 @@
           <Property Name="sobrenome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="senha" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Endereco_id" Type="Int64" Nullable="false" />
+          <Property Name="Endereco_id" Type="Int64" />
           <NavigationProperty Name="animal" Relationship="Self.fk_Animal_Usuario1" FromRole="usuario" ToRole="animal" />
           <NavigationProperty Name="endereco" Relationship="Self.fk_Usuario_Endereco1" FromRole="usuario" ToRole="endereco" />
           <NavigationProperty Name="interesse" Relationship="Self.fk_Interesse_Usuario1" FromRole="usuario" ToRole="interesse" />
@@ -373,7 +373,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Usuario_Endereco1">
-          <End Role="endereco" Type="Self.endereco" Multiplicity="1" />
+          <End Role="endereco" Type="Self.endereco" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="endereco">
