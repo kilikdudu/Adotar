@@ -220,6 +220,7 @@
     <Compile Include="Controllers\enderecoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\paisController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="endereco.cs">
       <DependentUpon>AdotarEntities.tt</DependentUpon>
@@ -331,6 +332,11 @@
     <Content Include="Views\enderecoes\Details.cshtml" />
     <Content Include="Views\enderecoes\Edit.cshtml" />
     <Content Include="Views\enderecoes\Index.cshtml" />
+    <Content Include="Views\pais\Create.cshtml" />
+    <Content Include="Views\pais\Delete.cshtml" />
+    <Content Include="Views\pais\Details.cshtml" />
+    <Content Include="Views\pais\Edit.cshtml" />
+    <Content Include="Views\pais\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
